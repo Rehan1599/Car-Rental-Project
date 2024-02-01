@@ -32,7 +32,7 @@
                     <asp:TextBox ID="User_Box" CssClass="form-control" placeholder="Enter UserId Or Email" runat="server"></asp:TextBox><br />
 
                     <asp:Label ID="Pass_Label" runat="server" Text="Password"></asp:Label>
-                    <asp:TextBox ID="Pass_Box" CssClass="form-control" placeholder="Enter Password" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="Pass_Box" TextMode="Password" CssClass="form-control" placeholder="Enter Password" runat="server"></asp:TextBox>
 
                     <asp:RadioButton ID="Cust_Radio" Checked="true" GroupName="Login_Radio" runat="server" />CUSTOMER&nbsp;<asp:RadioButton ID="Admin_Radio" GroupName="Login_Radio" runat="server" />ADMIN
                     <br />

@@ -80,11 +80,8 @@ public partial class View_Admin_Customers : System.Web.UI.Page
         catch (Exception ex)
         {
 
-
             Response.Write("<script>alert('"+ex.Message+ "')</script>");
-           
-
-
+          
         }
         finally
         {
