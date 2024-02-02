@@ -23,8 +23,6 @@ public partial class View_Customer_Cars : System.Web.UI.Page
         }
 
     }
-
-
     //--------------------Bind_Gridview  Function Codes-----------------------------
     void Bind_Gridview()
     {
@@ -105,8 +103,6 @@ public partial class View_Customer_Cars : System.Web.UI.Page
         string Status = "Booked";
         try
         {
-           
-
             string Query = "update Cars_tbl set  Status = @Status where Registration_No = @Reg_No";
             SqlCommand cmd = new SqlCommand(Query, con);
 
@@ -131,12 +127,9 @@ public partial class View_Customer_Cars : System.Web.UI.Page
     
     string RentDate, RetDate , PNumber, Status;
 
-
-
     //--------------------Cars_GridView_SelectedIndexChanged Event Codes-----------------------------
     protected void Cars_GridView_SelectedIndexChanged(object sender, EventArgs e)
     {
-
         TimeSpan DDays;
         DateTime selectedDate;
 
@@ -151,7 +144,6 @@ public partial class View_Customer_Cars : System.Web.UI.Page
             return;
         }
 
-
         if (Cars_GridView.SelectedRow != null)
         {
             GridViewRow row = Cars_GridView.SelectedRow;
@@ -165,12 +157,10 @@ public partial class View_Customer_Cars : System.Web.UI.Page
             {
                 PNumber = Reg_no_lbl.Text;
                 DPrice = Convert.ToInt32(Price_Box_lbl.Text);
-                //RentDate = System.DateTime.Today.Date.ToString();
-                //RetDate = Date_Box.Text;
+
                 RentDate = DateTime.Today.Date.ToString("dd-MM-yyyy");
                 RetDate = selectedDate.ToString("dd-MM-yyyy");
                 Status = Status_lbl.Text;
-
 
                 int Days = DDays.Days;
                 DPrice = Convert.ToInt32(Price_Box_lbl.Text);
@@ -206,8 +196,6 @@ public partial class View_Customer_Cars : System.Web.UI.Page
                     }
 
                 }
-
-
             }
             else
             {
@@ -225,7 +213,6 @@ public partial class View_Customer_Cars : System.Web.UI.Page
     //--------------------Date_Box_TextChanged Event Codes-----------------------------
     protected void Date_Box_TextChanged(object sender, EventArgs e)
     {
-       
             TimeSpan DDays;
             DateTime selectedDate;
        
@@ -249,7 +236,6 @@ public partial class View_Customer_Cars : System.Web.UI.Page
                 return;
             }
 
-
             if (Cars_GridView.SelectedRow != null)
             {
                 GridViewRow row = Cars_GridView.SelectedRow;
@@ -268,7 +254,6 @@ public partial class View_Customer_Cars : System.Web.UI.Page
                     //RetDate = Date_Box.Text;
                     RentDate = DateTime.Today.Date.ToString("dd-MM-yyyy");
                     RetDate = selectedDate.ToString("dd-MM-yyyy");
-
 
                     int Days = DDays.Days;
                     DPrice = Convert.ToInt32(Price_Box_lbl.Text);
@@ -302,8 +287,6 @@ public partial class View_Customer_Cars : System.Web.UI.Page
                             Book_lbl_3.Text = "Your Total Amout Is = '" + Fees + "'";
                         }
                     }
-                   
-
 
                 }
                 else
@@ -318,9 +301,7 @@ public partial class View_Customer_Cars : System.Web.UI.Page
                 Book_lbl.Text = "Cars Details Not selected.";
             }
         }
-      
-    
-
+        
     protected void Book_Button_Click(object sender, EventArgs e)
     {
         try
@@ -338,10 +319,8 @@ public partial class View_Customer_Cars : System.Web.UI.Page
                 Book_lbl.Text = "Please enter a valid date in the format dd/MM/yyyy.";
                 return;
             }
-
-
+            
             int Days = DDays.Days;
-
 
             GridViewRow row = Cars_GridView.SelectedRow;
             Label Reg_no_lbl = (Label)row.FindControl("Label_Id");
@@ -387,7 +366,6 @@ public partial class View_Customer_Cars : System.Web.UI.Page
                         using (SqlConnection con = new SqlConnection(cs))
 
                         {
-                            //string query = "INSERT INTO Rent_tbl VALUES (@PNumber, @Customer, @RentDate, @RetDate, @Fees)";
                             string query = "INSERT INTO Rent_tbl VALUES (@PNumber, @Customer, @RentDate, @RetDate, @Fees)";
                             Console.WriteLine("Query: " + query); // Print the query for debugging
 
@@ -415,8 +393,6 @@ public partial class View_Customer_Cars : System.Web.UI.Page
                             }
                             con.Close();
                         }
-
-
                     }
                     else
                     {
@@ -424,7 +400,6 @@ public partial class View_Customer_Cars : System.Web.UI.Page
                     }
                 }
             }
-           
         }
            
         catch (Exception ex)
@@ -433,9 +408,7 @@ public partial class View_Customer_Cars : System.Web.UI.Page
         }
       
     }
-
-
-
+//Clear Text Boxes 
     protected void Rest_Button_Click(object sender, EventArgs e)
     {
         Fees = 0;
@@ -449,100 +422,5 @@ public partial class View_Customer_Cars : System.Web.UI.Page
         Book_lbl_2.Text = "";
         Book_lbl_3.Text = "";
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //protected void Cars_GridView_SelectedIndexChanged(object sender, EventArgs e)
-    //{
-    //    GridViewRow row = Cars_GridView.SelectedRow;
-    //     Reg_no_lbl = (Label)row.FindControl("Label_Id");
-    //     Price_Box_lbl = (Label)row.FindControl("Label_Price");
-
-    //    PNumber = Reg_no_lbl.Text;
-    //    RentDate = System.DateTime.Today.Date.ToString();
-    //    RetDate = Date_Box.Text;
-    //     DPrice = Convert.ToInt32(Price_Box_lbl.Text);
-
-    //}
-
-
-    //protected void Book_Button_Click(object sender, EventArgs e)
-    //{
-
-
-
-    //       TimeSpan DDays = Convert.ToDateTime(Date_Box.ToString()) - System.DateTime.Today.Date;
-
-    //     int Days = DDays.Days;
-
-    //    GridViewRow row = Cars_GridView.SelectedRow;
-    //    Label Reg_no_lbl = (Label)row.FindControl("Label_Id");
-    //    Label Price_Box_lbl = (Label)row.FindControl("Label_Price");
-
-    //    PNumber = Reg_no_lbl.Text;
-    //    DPrice = Convert.ToInt32(Price_Box_lbl.Text);
-
-
-    //    Fees = DPrice * Days;
-
-    //    RentDate = System.DateTime.Today.Date.ToString();
-    //    RetDate = Date_Box.Text;
-
-
-    //    Customer = Convert.ToInt32(Session["User"]);
-
-
-    //    SqlConnection con = new SqlConnection(cs);
-
-    //    try
-    //    {
-
-    //            string query = "insert into Rent_tbl values('"+ PNumber + "', '" + Customer + "', '" +Convert.ToDateTime(RentDate) + "', '" + Convert.ToDateTime(RetDate) + "', '" + Fees + "')";
-    //            SqlCommand cmd = new SqlCommand(query, con);
-    //            con.Open();
-
-    //            int a = cmd.ExecuteNonQuery();
-    //            if (a > 0)
-    //            {
-    //                ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Swal.fire('success','Car Number '"+ PNumber+"' Booked Successfully','success')", true);
-    //            Bind_Gridview();
-    //            }
-    //            else
-    //            {
-    //            ScriptManager.RegisterStartupScript(this, GetType(), "Popup", "Swal.fire('Failure','Missing Information','error')", true);
-
-    //            }
-
-
-    //    }
-    //    catch(Exception Ex)
-    //    {
-    //        Book_lbl.Text = Ex.Message;
-    //    }
-    //    finally
-    //    {
-    //        con.Close();
-    //    }
-    //    Bind_Gridview();
-    //}
-
-
-
-
-
 
 }
